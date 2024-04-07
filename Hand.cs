@@ -42,6 +42,7 @@ namespace BlackjackMVC
         {
             int sum = 0;
             int numOfAces = 0;
+            int numofJokers = 0;
 
             foreach (Card card in Cards)
             {
@@ -50,7 +51,24 @@ namespace BlackjackMVC
                 {
                     numOfAces++;
                 }
+                if(card.Rank == Rank.Joker)
+                {
+                    numofJokers++;
+                }
             }
+            while (numofJokers > 0)
+            {
+                if(sum > 21)
+                {
+                    sum -= 10;
+                    numofJokers--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             // Aces are 11 unless that causes the hand to bust, if so they are 1.
             while (numOfAces > 0)
             {

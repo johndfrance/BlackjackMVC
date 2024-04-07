@@ -17,7 +17,15 @@ namespace BlackjackMVC
         }
         public override string ToString()
         {
-            return $"{Rank} of {Suit}";
+            if (Suit.Equals(Suit.NULL))
+            {
+                return $"{Rank}";
+            }
+            else
+            {
+                return $"{Rank} of {Suit}";
+            }
+            
         }
     }
     public enum Suit
@@ -26,6 +34,7 @@ namespace BlackjackMVC
         Diamonds,
         Clubs,
         Spades,
+        NULL,
     }
     public enum Rank
     {
@@ -42,6 +51,7 @@ namespace BlackjackMVC
         Jack = 10,
         Queen = 10,
         King = 10,
+        Joker = 15,
     }
 }
 

@@ -9,17 +9,29 @@ namespace BlackjackMVC
     internal class Deck
     {
         public List<Card> deck;
-        public Deck()
+        public Deck(bool JokerMode)
         {
             deck = new List<Card>();
 
-            foreach (Suit suit in Enum.GetValues(typeof(Suit)))
-            {
-                foreach (Rank rank in Enum.GetValues(typeof(Rank)))
+                foreach (Suit suit in Enum.GetValues(typeof(Suit)))
                 {
-                    Card card = new Card(rank, suit);
-                    deck.Add(card);
+                    if (suit != Suit.NULL)
+                    {
+                        foreach (Rank rank in Enum.GetValues(typeof(Rank)))
+                        {
+                            if (rank != Rank.Joker)
+                            {
+                                Card card = new Card(rank, suit);
+                                deck.Add(card);
+                            }
+                        }
+                    }
                 }
+            if (JokerMode)
+            {
+                Card card = new Card(Rank.Joker, Suit.NULL);
+                deck.Add(card);
+                deck.Add(card);
             }
         }
 

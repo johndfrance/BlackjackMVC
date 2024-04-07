@@ -28,7 +28,7 @@ namespace BlackjackMVC
 
         public Controller() 
         {
-            Deck = new Deck();
+            Deck = new Deck(false);
             PlayerHand = new Hand();
             DealerHand = new Hand();
             Player = new Player();
